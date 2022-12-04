@@ -256,27 +256,27 @@ public final class AutoSizeConfig {
         mInitXdpi = displayMetrics.xdpi;
         mInitScreenWidthDp = configuration.screenWidthDp;
         mInitScreenHeightDp = configuration.screenHeightDp;
-        application.registerComponentCallbacks(new ComponentCallbacks() {
-            @Override
-            public void onConfigurationChanged(Configuration newConfig) {
-                if (newConfig != null) {
-                    if (newConfig.fontScale > 0) {
-                        mInitScaledDensity =
-                                Resources.getSystem().getDisplayMetrics().scaledDensity;
-                        AutoSizeLog.d("initScaledDensity = " + mInitScaledDensity + " on ConfigurationChanged");
-                    }
-                    isVertical = newConfig.orientation == Configuration.ORIENTATION_PORTRAIT;
-                    int[] screenSize = ScreenUtils.getScreenSize(application);
-                    mScreenWidth = screenSize[0];
-                    mScreenHeight = screenSize[1];
-                }
-            }
-
-            @Override
-            public void onLowMemory() {
-
-            }
-        });
+//        application.registerComponentCallbacks(new ComponentCallbacks() {
+//            @Override
+//            public void onConfigurationChanged(Configuration newConfig) {
+//                if (newConfig != null) {
+//                    if (newConfig.fontScale > 0) {
+//                        mInitScaledDensity =
+//                                Resources.getSystem().getDisplayMetrics().scaledDensity;
+//                        AutoSizeLog.d("initScaledDensity = " + mInitScaledDensity + " on ConfigurationChanged");
+//                    }
+//                    isVertical = newConfig.orientation == Configuration.ORIENTATION_PORTRAIT;
+//                    int[] screenSize = ScreenUtils.getScreenSize(application);
+//                    mScreenWidth = screenSize[0];
+//                    mScreenHeight = screenSize[1];
+//                }
+//            }
+//
+//            @Override
+//            public void onLowMemory() {
+//
+//            }
+//        });
         AutoSizeLog.d("initDensity = " + mInitDensity + ", initScaledDensity = " + mInitScaledDensity);
         mActivityLifecycleCallbacks = new ActivityLifecycleCallbacksImpl(new WrapperAutoAdaptStrategy(strategy == null ? new DefaultAutoAdaptStrategy() : strategy));
         application.registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks);
